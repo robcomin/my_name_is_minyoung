@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minyoung Hwang - KAIST</title>
+    <style>
+        /* 기본 스타일 리셋 및 테마 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #004185; /* KAIST Blue */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f8f9fa;
+            --border-color: #e9ecef;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        /* 레이아웃 구조 */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 헤더 / 내비게이션 */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        nav .logo {
+            font-size: 1.3-rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* 섹션 공통 스타일 */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--bg-light);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* 히어로(프로필) 섹션 */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 100px 0 80px 0;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .contact-info {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .contact-info li {
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        .contact-info strong {
+            color: var(--text-dark);
+        }
+
+        /* 학력 & 경력 스타일 */
+        .timeline-item {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid var(--border-color);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-light);
+        }
+
+        /* 연구 분야 */
+        .interests-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tag {
+            background-color: #ffffff;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        section:nth-of-type(even) .tag {
+            background-color: #ffffff;
+        }
+
+        /* 논문 / 프로젝트 리스트 */
+        .list-item {
+            margin-bottom: 18px;
+            padding-left: 25px;
+            text-indent: -25px;
+        }
+
+        .list-item strong.me {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .badge {
+            background-color: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 5px;
+            display: inline-block;
+            text-indent: 0;
+        }
+
+        /* 푸터 */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav">
+            <div class="logo">Minyoung Hwang</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container hero">
+            <div class="hero-text">
+                <h1>Minyoung Hwang <span style="font-size: 1.8rem; font-weight: normal; color: var(--text-light);">(황민영)</span></h1> [cite: 1]
+                <h2>Ph.D. Candidate in Electrical Engineering at KAIST</h2> [cite: 2, 3]
+                
+                <ul class="contact-info">
+                    <li><strong>Affiliation:</strong> Laboratory for Information Transmission (LIT), KAIST</li> [cite: 3, 57]
+                    <li><strong>Advisor:</strong> Prof. Hyuncheol Park</li> [cite: 7]
+                    <li><strong>Email:</strong> robco@kaist.ac.kr</li> [cite: 5]
+                    <li><strong>Mobile:</strong> +82-10-8448-5960</li> [cite: 5]
+                    <li><strong>Address:</strong> 291, Daehak-ro, Yuseong-gu, Daejeon, Republic of Korea</li> [cite: 5]
+                </ul>
+
+                <h3 style="margin-bottom: 15px; font-size: 1.3rem; color: var(--primary-color);">Research Interests</h3>
+                <div class="interests-tags">
+                    <span class="tag">Wireless communication</span> [cite: 20]
+                    <span class="tag">Integrated sensing and communication (ISAC)</span> [cite: 20]
+                    <span class="tag">Machine learning algorithm</span> [cite: 20]
+                    <span class="tag">Error management schemes for NAND flash memory</span> [cite: 20]
+                    <span class="tag">Simultaneous wireless information and power transfer</span> [cite: 20]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2> [cite: 4]
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title"><strong>KAIST</strong> - Ph.D. in Electrical Engineering</span> [cite: 6]
+                    <span class="timeline-date">Mar 2023 - Present</span> [cite: 14, 15]
+                </div>
+                <div class="timeline-desc">
+                    GPA: 4.12 / 4.30 | Advisor: Prof. Hyuncheol Park<br> [cite: 6, 7]
+                    Dissertation: TBD [cite: 8]
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title"><strong>KAIST</strong> - Masters in Electrical Engineering</span> [cite: 9]
+                    <span class="timeline-date">Mar 2021 - Feb 2023</span> [cite: 17]
+                </div>
+                <div class="timeline-desc">
+                    GPA: 4.10 / 4.30 | Advisor: Prof. Hyuncheol Park<br> [cite: 9, 10]
+                    Thesis: Adaptive Error Management System for Low Latency NAND Flash Memory Under Process Variation [cite: 11]
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title"><strong>KAIST</strong> - Bachelor in Electrical Engineering</span> [cite: 11]
+                    <span class="timeline-date">Mar 2016 - Feb 2021</span> [cite: 19]
+                </div>
+                <div class="timeline-desc">
+                    GPA: 3.46 / 4.30 | Advisor: Prof. Hyuncheol Park [cite: 11, 12]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="container">
+            <h2 class="section-title">Publications & Patents</h2> [cite: 21, 44]
+            
+            <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">International Journals</h3> [cite: 22]
+            <div class="list-item">1. <strong class="me">Minyoung Hwang</strong>, Dusik Jeong, Hyuncheol Park, Jeongju Jee, and Nuria González-Prelcic, "Spatial Estimation of Extended Target Using Expected Response in Near-field Integrated Sensing and Communication", <em>in preparation</em>. [cite: 23]</div>
+            <div class="list-item">2. Inhyuk Choi, <strong class="me">Minyoung Hwang</strong>, Jeongju Jee, and Hyuncheol Park, "Unsupervised Context Adaptation with Attention for Estimating Threshold Voltage Distributions under Process Variation," <em>Submitted to IEEE Access</em>. [cite: 24]</div>
+            <div class="list-item">3. <strong class="me">Minyoung Hwang</strong>, Inhyuk Choi, Jeongju Jee, and Hyuncheol Park, "Intelligent Soft Read Framework with Non-uniform Quantizer for NAND Flash Memory Under Process Variations," <em>in IEEE Access</em>, vol. 14, pp. 26363-26380, 2026. [cite: 25, 26]</div>
+            <div class="list-item">4. <strong class="me">Minyoung Hwang</strong>, Jeongju Jee, Joonhyuk Kang, Hyuncheol Park, Seonmin Lee and Jinyoung Kim, "Dynamic Error Recovery Flow Prediction Based on Reusable Machine Learning for Low Latency NAND Flash Memory under Process Variation," <em>in IEEE Access</em>, vol. 10, pp. 117715-117731, 2022. [cite: 27, 28]</div>
+            <div class="list-item">5. Hongsun An, <strong class="me">Minyoung Hwang</strong> and Hyuncheol Park, "Phase Aligned Time-Reversal for Multi-User Wireless Power Transfer Systems With Non-Linear Energy Harvesting," <em>in IEEE Access</em>, vol. 9, pp. 109976-109985, 2021. [cite: 29, 30]</div>
+
+            <h3 style="margin: 35px 0 15px 0; color: var(--primary-color);">International Conferences</h3> [cite: 31]
+            <div class="list-item">1. <strong class="me">Minyoung Hwang</strong>, Hyuncheol Park, and Nuria González-Prelcic, "Exploiting Near-field Effect with Spatially Separated Sub-arrays for Upper Mid-band ISAC," <em>IEEE International Conference on Communications (ICC)</em>, 2026. <span class="badge">Accepted</span></div> [cite: 32]
+            <div class="list-item">2. Hyunwoo Kim, <strong class="me">Minyoung Hwang</strong>, Jeongju Jee, Jihong Park, and Hyuncheol Park, "3D State Transition Modeling and Power Allocation for UAV-aided ISAC System," <em>IEEE Vehicular Technology Conference (VTC) Fall</em>, 2023, pp. 1-6. [cite: 33]</div>
+            <div class="list-item">3. <strong class="me">Minyoung Hwang</strong>, Hongsun An and Hyuncheol Park, "Joint Design of Transmit Waveform and Reflection Phase for Intelligent Reflecting Surface Aided Wireless Power Transfer," <em>IEEE Wireless Communications and Networking Conference (WCNC)</em>, 2022, pp. 770-775. [cite: 34]</div>
+
+            <h3 style="margin: 35px 0 15px 0; color: var(--primary-color);">Patents</h3> [cite: 44]
+            <div class="list-item">1. <strong>U.S. Patent:</strong> Hyuncheol Park and Minyoung Hwang, No. 12,136,823, 2024. [cite: 46]</div>
+            <div class="list-item">2. <strong>PCT Application:</strong> KR2022/002415, 2022. [cite: 47]</div>
+            <div class="list-item">3. <strong>Domestic Patents (KR):</strong> 3건 등록 완료 및 3건 출원 중 (Near-field ISAC 및 빔포밍 기술 관련). [cite: 49, 50, 51, 52, 53]</div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2> [cite: 54]
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title"><strong>University of California San Diego (UCSD)</strong> - Visiting Ph.D. Student</span> [cite: 55]
+                    <span class="timeline-date">June 2025 - Dec 2025</span> [cite: 55]
+                </div>
+                <div class="timeline-desc">
+                    WiSeCom Lab | Supervisor: Prof. Nuria González-Prelcic [cite: 55]
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title"><strong>KAIST</strong> - Teaching Assistant</span> [cite: 56]
+                    <span class="timeline-date">Mar 2021 - Feb 2023</span> [cite: 56]
+                </div>
+                <div class="timeline-desc">
+                    School of Electrical Engineering [cite: 56]
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title"><strong>KAIST</strong> - Undergraduate Research Intern</span> [cite: 57]
+                    <span class="timeline-date">Jan 2020 - Feb 2021</span> [cite: 57]
+                </div>
+                <div class="timeline-desc">
+                    Laboratory for Information Transmission | Supervisor: Prof. Hyuncheol Park [cite: 57]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects & Awards</h2> [cite: 61, 72]
+            
+            <h3 style="margin-bottom: 15px; color: var(--primary-color);">Selected Research Projects</h3>
+            <ul style="list-style-type: square; padding-left: 20px; color: var(--text-light); margin-bottom: 30px;">
+                <li style="margin-bottom: 10px;"><strong style="color:var(--text-dark);">IITP:</strong> 6G Cloud Research and Education Open Hub (Jul. 2024 - Dec. 2028)</li> [cite: 62]
+                <li style="margin-bottom: 10px;"><strong style="color:var(--text-dark);">IITP:</strong> Development on Key Technologies of Integrated AI-Communication-Sensing for Future Mobility Services (Jul. 2023 - Dec. 2030)</li> [cite: 63]
+                <li style="margin-bottom: 10px;"><strong style="color:var(--text-dark);">NRF:</strong> Development of Intelligent Joint Beamforming with Sensing Technology for 6G Network Utilizing 3-dimensional Resources (Mar. 2023 - Feb. 2026)</li> [cite: 64]
+                <li style="margin-bottom: 10px;"><strong style="color:var(--text-dark);">Samsung Electronics:</strong> Development of Low-latency/high-reliability Sensing and Management Technology for NAND Flash Memory Reflecting Variation Between Chips (Oct. 2021 - Oct. 2025)</li> [cite: 65]
+            </ul>
+
+            <h3 style="margin-bottom: 15px; color: var(--primary-color);">Honors and Awards</h3> [cite: 72]
+            <ul style="list-style-type: disc; padding-left: 20px; color: var(--text-light);">
+                <li style="margin-bottom: 8px;"><strong style="color:var(--text-dark);">Outstanding Teaching Assistant Award</strong>, KAIST EE (Fall 2022)</li> [cite: 73]
+                <li style="margin-bottom: 8px;"><strong style="color:var(--text-dark);">The Best Undergraduate Student Paper Award</strong>, KICS Fall (Feb. 2021)</li> [cite: 73]
+                <li style="margin-bottom: 8px;"><strong style="color:var(--text-dark);">KAIST / Korea Government Funded Scholarship</strong> (2021 - Present)</li> [cite: 73]
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Minyoung Hwang. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
