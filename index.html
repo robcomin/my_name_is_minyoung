@@ -127,12 +127,27 @@
             padding-bottom: 5px;
         }
 
-        /* 히어로(프로필) 섹션 개편 */
+        /* 히어로(프로필) 섹션 레이아웃 */
         .hero {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 50px;
-            padding: 40px 0;
+            padding: 20px 0;
+        }
+
+        /* 프로필 이미지 스타일 박스 */
+        .hero-img-box {
+            flex-shrink: 0;
+        }
+
+        .hero-img {
+            width: 240px;
+            height: 310px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            background-color: #eee;
         }
 
         .hero-text {
@@ -377,7 +392,7 @@
             font-size: 0.9rem;
         }
 
-        /* 모바일 모드 반응형 브레이크포인트 보완 */
+        /* 모바일 모드 반응형 브레이크포인트 */
         @media (max-width: 768px) {
             header .container.nav-wrapper {
                 flex-direction: row;
@@ -396,7 +411,13 @@
                 margin-left: 15px;
             }
             section { padding: 50px 0; }
-            .hero { flex-direction: column; gap: 20px; }
+            
+            .hero { flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+            .hero-img { width: 180px; height: 232px; }
+            .contact-info-list strong { display: block; width: auto; margin-bottom: 2px; }
+            .profile-links { justify-content: center; }
+            .interests-tags { justify-content: center; }
+            
             .hero-text h1 { font-size: 2.2rem; }
             .timeline-header { flex-direction: column; align-items: flex-start; }
             .bullet-list .date { float: none; display: block; margin-top: 2px; }
@@ -419,24 +440,24 @@
         </div>
     </header>
 
-    <!-- ABOUT SECTION -->
     <section id="about">
         <div class="container hero">
+            <div class="hero-img-box">
+                <img src="profile.jpg" alt="Minyoung Hwang" class="hero-img">
+            </div>
+
             <div class="hero-text">
                 <h1>Minyoung Hwang <span style="font-size: 1.6rem; font-weight: normal; color: var(--text-light);">(황민영)</span></h1>
                 
-                <!-- 수정된 한 줄 소글 및 lit 하이퍼링크 -->
                 <p class="bio-intro">
-                    Ph.D. Candidate at <a href="http://lit.kaist.ac.kr/" target="_blank">Laboratory for Information Transmission (LIT)</a>, The School of Electrical Engineering, KAIST.
+                    Ph.D. Candidate @ <a href="http://lit.kaist.ac.kr/" target="_blank">Laboratory for Information Transmission (LIT)</a>, The School of Electrical Engineering, KAIST.
                 </p>
                 
-                <!-- 이메일 및 오피스 지도 연동 -->
                 <ul class="contact-info-list">
                     <li><strong>Email:</strong> <a href="mailto:robco@kaist.ac.kr">robco@kaist.ac.kr</a></li>
                     <li><strong>Office:</strong> <a href="https://maps.app.goo.gl/Kzqoh9AaHxwUiuaA7" target="_blank">W7 101 @ KAIST</a></li>
                 </ul>
 
-                <!-- 프로필 버튼 링크 그룹 -->
                 <div class="profile-links">
                     <a href="https://scholar.google.com/citations?user=Knf36ssAAAAJ&hl=ko" class="btn-link" target="_blank">Scholar</a>
                     <a href="https://drive.google.com/file/d/1cmgOGnbBOmBgQeTBmeERLYNmc8lrWr_k/view?usp=sharing" class="btn-link" target="_blank">CV</a>
@@ -455,7 +476,6 @@
         </div>
     </section>
 
-    <!-- EDUCATION SECTION (GPA 완전 삭제) -->
     <section id="education">
         <div class="container">
             <h2 class="section-title">Education</h2>
@@ -498,12 +518,10 @@
         </div>
     </section>
 
-    <!-- PUBLICATIONS & PATENTS SECTION -->
     <section id="publications">
         <div class="container">
             <h2 class="section-title">Publications & Patents</h2>
             
-            <!-- International Journals -->
             <h3 class="subsection-title">International Journals</h3>
             <div class="publication-list">
                 <div class="list-item">1. <strong class="me">Minyoung Hwang</strong>, Dusik Jeong, Hyuncheol Park, Jeongju Jee, and Nuria González-Prelcic, "Spatial Estimation of Extended Target Using Expected Response in Near-field Integrated Sensing and Communication," <em>in preparation</em>.</div>
@@ -513,7 +531,6 @@
                 <div class="list-item">5. Hongsun An, <strong class="me">Minyoung Hwang</strong>, and Hyuncheol Park, "Phase Aligned Time-Reversal for Multi-User Wireless Power Transfer Systems With Non-Linear Energy Harvesting," <em>IEEE Access</em>, vol. 9, pp. 109976-109985, 2021. <a href="https://ieeexplore.ieee.org/abstract/document/9507494" target="_blank">[DOI]</a></div>
             </div>
 
-            <!-- International Conferences -->
             <h3 class="subsection-title">International Conferences</h3>
             <div class="publication-list">
                 <div class="list-item">1. <strong class="me">Minyoung Hwang</strong>, Hyuncheol Park, and Nuria González-Prelcic, "Exploiting Near-field Effect with Spatially Separated Sub-arrays for Upper Mid-band ISAC," <em>IEEE International Conference on Communications (ICC)</em>, 2026. <span class="badge">Accepted</span></div>
@@ -521,7 +538,6 @@
                 <div class="list-item">3. <strong class="me">Minyoung Hwang</strong>, Hongsun An, and Hyuncheol Park, "Joint Design of Transmit Waveform and Reflection Phase for Intelligent Reflecting Surface Aided Wireless Power Transfer," <em>IEEE Wireless Communications and Networking Conference (WCNC)</em>, 2022, pp. 770-775. <a href="https://ieeexplore.ieee.org/document/9771626" target="_blank">[DOI]</a></div>
             </div>
 
-            <!-- Domestic Publications -->
             <h3 class="subsection-title">Domestic Publications</h3>
             <div class="publication-list">
                 <div class="list-item">1. Dusik Jeong, Hyunwoo Kim, <strong class="me">Minyoung Hwang</strong>, and Hyuncheol Park, "Near-field Sensing of Extended Target with Non-Gaussian Angular Spread," <em>KICS Winter Conference</em>, 2025. <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12132112" target="_blank">[Link]</a></div>
@@ -533,7 +549,6 @@
                 <div class="list-item">7. <strong class="me">Minyoung Hwang</strong>, Wooyong Yang, Sangjin Shin, and Joohwan Chun, "TB and Knapsack Based Improved Scheduling Techniques for Multi-Function Radar," <em>The Journal of KIEES</em>, vol. 29, no. 12, pp. 976–985, 2018. <a href="http://www.jkiees.org/archive/view_article?pid=jkiees-29-12-976" target="_blank">[DOI]</a></div>
             </div>
 
-            <!-- Patents -->
             <h3 class="subsection-title">Patents</h3>
             <div class="publication-list">
                 <div class="list-item">1. <strong>U.S. Patent:</strong> Hyuncheol Park and <strong class="me">Minyoung Hwang</strong>, "Computer System for maximizing Wireless Energy Harvesting Using Intelligent Reflecting Surface and Method Thereof," No. 12,136,823, 2024. <a href="https://patents.google.com/patent/US12136823B2/en" target="_blank">[Link]</a></div>
@@ -548,7 +563,6 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE SECTION -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Experience</h2>
@@ -606,7 +620,6 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Research Projects</h2>
@@ -626,7 +639,6 @@
         </div>
     </section>
 
-    <!-- HONORS & AWARDS SECTION -->
     <section id="honors">
         <div class="container">
             <h2 class="section-title">Honors and Awards</h2>
@@ -641,7 +653,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Minyoung Hwang. All Rights Reserved.</p>
+            <p>© 2026 Minyoung Hwang. All Rights Reserved.</p>
         </div>
     </footer>
 
